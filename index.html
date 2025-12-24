@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站首页</title>
+    
+    <link rel="preconnect" href="https://img.remit.ee">
+    
+    <style>
+        body {
+            background-color: #FFFFFF;
+            color: #333333;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px; 
+            margin: 80px auto 20px; 
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        /* 优化容器：增加背景色，在图片加载前显示灰色占位 */
+        .item-wrapper, .item-wrapper-high, .grid-item a, .grid-item-full a {
+            background-color: #f0f0f0;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        
+        /* 添加一个简单的骨架屏扫描动画，提示用户这里有东西 */
+        .item-wrapper::after, .item-wrapper-high::after, .grid-item a::after, .grid-item-full a::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            transform: translateX(-100%);
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0));
+            animation: shimmer 2s infinite;
+            z-index: 1;
+        }
+
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
+        }
+
+        .content-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0; /* 初始完全透明 */
+            transition: opacity 0.8s ease-in-out, transform 0.3s ease;
+            position: relative;
+            z-index: 2; /* 确保图片在骨架屏动画之上 */
+        }
+        
+        /* 图片加载完成后添加这个类，让它显示出来 */
+        .content-image.loaded {
+            opacity: 1;
+        }
+
+        .item-wrapper {
+            margin-bottom: 20px;
+            max-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .item-wrapper-high {
+            margin-bottom: 20px;
+            max-height: 850px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .item-wrapper .content-image,
+        .item-wrapper-high .content-image {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        a:hover .content-image {
+            transform: scale(1.03);
+        }
+        
+        .grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px 20px;
+        }
+
+        .grid-item, .grid-item-full {
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+        .grid-item {
+            width: 50%;
+        }
+        
+        .grid-item-full {
+            width: 100%;
+        }
+
+        .grid-container .content-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .site-footer {
+            text-align: center;
+            font-size: 12px;
+            color: #888888;
+            margin-top: 60px;
+            padding-top: 20px;
+            padding-bottom: 40px;
+            border-top: 1px solid #eeeeee;
+            line-height: 1.8;
+        }
+
+        .site-footer p { margin: 0 0 5px 0; padding: 0; }
+        .site-footer a { color: #888888; text-decoration: none; display: inline; transition: color 0.2s ease; }
+        .site-footer a:hover { color: #333333; text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .grid-item { width: 100%; }
+            .container { margin: 60px auto 10px; }
+            .item-wrapper { max-height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+   
+    <!-- 注意：所有 src 都改成了 data-src -->
+    
+    <div class="item-wrapper">
+        <img data-src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAECFk5oyS4hFsIW6C9ZDo55e451gcC8NQACTDkAAvOKSVa-3QdeK_j6SzYE.jpg" 
+             class="content-image" 
+             oncontextmenu="return false;" 
+             ondragstart="return false;" />
+    </div>
+
+    <div class="item-wrapper">
+        <img data-src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAECg4Jo0Wj4sXZd6g3TINxjI8h_EeMTbgACuh0AArKuiFYc8_kVAv4rajYE.jpeg" 
+             class="content-image" 
+             oncontextmenu="return false;" 
+             ondragstart="return false;" />
+    </div>
+
+    <div class="item-wrapper">
+        <img data-src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAECJxdoy-gLp1QwofAAAcjgU3nqqscruyoAAt4aAAIcEGFWTJBfwewyjpU2BA.png" 
+             class="content-image" 
+             oncontextmenu="return false;" 
+             ondragstart="return false;" />
+    </div>
+
+    <div class="item-wrapper">
+        <img data-src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAECL1pozfZH6YbY3ewWcZwb_t9wZfpsdAACvhUAAtUHcVY5TuOJcr1OZDYE.jpg" 
+             class="content-image" 
+             oncontextmenu="return false;" 
+             ondragstart="return false;" />
+    </div>
+
+    <div class="item-wrapper">
+        <img data-src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAECGnxoyhg1MAsI1ETk0fYMJ2_5CqdxDAACohcAAr4MUVYNtR6AZlSkzTYE.jpg" 
+             class="content-image" 
+             oncontextmenu="return false;" 
+             ondragstart="return false;" />
+    </div>
+
+    <!-- 四宫格 + 横幅 -->
+    <div class="grid-container">
+        <div class="grid-item">
+            <a href="https://afdian.com/item/d9668514908a11f0b7a05254001e7c00" oncontextmenu="return false;" ondragstart="return false;">
+                <img data-src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAECBbloyM-l3YUk6pt0XWczOdNsFDuh3gAC7ScAAvOKSVb587bcXv7oXTYE.jpg" class="content-image" />
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="https://for.shuo.bar/pricing" oncontextmenu="return false;" ondragstart="return false;">
+                <img data-src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAECFZVoyRqyfw5w0pfW78Nqf7qmfwNj4wACajgAAvOKSVZC6d-RvhI_MzYE.jpg" class="content-image" />
+            </a>
+        </div>
+        <div class="grid-item">
+             <a href="#"><img data-src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAECDyNoyOxkdcOHPUpEpgYgO3rCG5FHKAACoTEAAvOKSVZXGB1s690V6DYE.jpg" class="content-image" oncontextmenu="return false;" /></a>
+        </div>
+
+        <div class="grid-item">
+            <a href="#"><img data-src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAECDyRoyOxl_Q9IYF-xJKW3UBUJZnNKrwACojEAAvOKSVZuIyNTevm1SjYE.jpg" class="content-image" oncontextmenu="return false;" /></a>
+        </div>
+        <div class="grid-item-full">
+            <a href="https://for.shuo.bar/console/topup" oncontextmenu="return false;" ondragstart="return false;">
+                <img data-src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAECF45oyVSQxJ6tT0m-pzpMYQMcaP9yOwACLjsAAvOKSVYgtge2mwySXDYE.jpg" class="content-image" />
+            </a>
+        </div>
+    </div>
+
+    <div class="item-wrapper">
+        <img data-src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAECHyhoyoob6uZPgB2CuBIAAa4HEeP2DSEAAlUeAAK-DFFWG2KNdZs8mXQ2BA.jpg" 
+             class="content-image" 
+             oncontextmenu="return false;" 
+             ondragstart="return false;" />
+    </div>
+
+    <!-- 动图优化 -->
+    <div class="item-wrapper-high">
+        <img data-src="https://v1.luoli.click/?file=d0d47bca4945dec0_1758103707.gif" 
+             class="content-image" 
+             oncontextmenu="return false;" 
+             ondragstart="return false;" />
+    </div>
+
+    <!-- 视频优化：data-src, 不自动预加载 -->
+    <div class="item-wrapper-high">
+        <video 
+            class="content-image lazy-video" 
+            data-src="https://imgtu.com/uploads/s0f7xaky/1000687011.mp4" 
+            loop 
+            muted 
+            playsinline
+            preload="none"
+            oncontextmenu="return false;"
+            ondragstart="return false;">
+            您的浏览器不支持视频播放。
+        </video>
+    </div>
+    
+    <div class="item-wrapper">
+        <img data-src="https://img.remit.ee/api/file/BQACAgUAAyEGAASHRsPbAAECFchoyR-J5TYnw-z35eujsVza858d6gACqDgAAvOKSVa8Ft688bctzTYE.jpg" class="content-image" oncontextmenu="return false;" />
+    </div>
+
+    <footer class="site-footer">
+        <p>
+            <a href="https://for.shuo.bar/about">Privacy Policy</a>
+            <span style="margin: 0 10px;">|</span>
+            <a href="https://for.shuo.bar/about">Terms of Service</a>
+            <span style="margin: 0 10px;">|</span>
+            <a href="/cdn-cgi/l/email-protection#e18b8e83a19bcf8e9386"><span class="__cf_email__" data-cfemail="f993969bb983d7968b9e">[email&#160;protected]</span></a>
+        </p>
+                <p>
+            NewAPI & NeoAPI
+        </p>
+        <p>
+            © 2025 Srap Holdings Limited (UEN: 201716227D). All Rights Reserved.
+        </p>
+    </footer>
+
+</div>
+
+
+
+<script>
+    // 定义一个加载资源的函数
+    function loadHeavyResources() {
+        // 1. 处理所有图片
+        const images = document.querySelectorAll('img[data-src]');
+        images.forEach(img => {
+            img.src = img.getAttribute('data-src');
+            img.onload = () => {
+                img.classList.add('loaded'); // 图片下载完后，渐变显示
+                // 移除 loading 动画效果（可选，通过移除父级伪元素实现，这里简单起见不做，因为图片盖在上面了）
+            };
+            img.removeAttribute('data-src'); // 清理
+        });
+
+        // 2. 处理视频 (需要 IntersectionObserver 实现进入视口再播放，进一步节省资源)
+        const videos = document.querySelectorAll('video[data-src]');
+        
+        if ('IntersectionObserver' in window) {
+            const videoObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const video = entry.target;
+                        // 如果还没赋值 src，现在赋值
+                        if (video.getAttribute('data-src')) {
+                            video.src = video.getAttribute('data-src');
+                            video.removeAttribute('data-src');
+                            video.load(); // 必须调用 load
+                        }
+                        video.play().then(() => {
+                            video.classList.add('loaded');
+                        }).catch(e => console.log("Autoplay blocked or waiting for user interaction"));
+                    } else {
+                        // 离开视口暂停
+                        if(!entry.target.getAttribute('data-src')) { // 只有加载过的才暂停
+                             entry.target.pause();
+                        }
+                    }
+                });
+            });
+
+            videos.forEach(video => {
+                videoObserver.observe(video);
+            });
+        } else {
+            // 降级处理：不支持 Observer 的旧浏览器直接加载
+            videos.forEach(video => {
+                video.src = video.getAttribute('data-src');
+                video.removeAttribute('data-src');
+                video.autoplay = true;
+                video.classList.add('loaded');
+            });
+        }
+    }
+
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            // requestAnimationFrame 确保在浏览器准备好重绘时执行
+            requestAnimationFrame(loadHeavyResources);
+        }, 100); 
+    });
+</script>
+
+</body>
+</html>
