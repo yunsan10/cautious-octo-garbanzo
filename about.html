@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang="pageTitle">关于我们</title>
+    <style>
+        /* --- 全局样式 --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f7f8fa; /* 使用淡灰色作为分区背景 */
+            margin: 0;
+        }
+
+        /* --- 语言切换器顶部栏 --- */
+        .top-bar {
+            background-color: #ffffff;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+            text-align: right;
+        }
+
+        .language-switcher {
+            font-size: 0.9em;
+            display: inline-block; /* 确保切换器在栏内 */
+        }
+        
+        .language-switcher a {
+            color: #666;
+            text-decoration: none;
+            margin-left: 15px;
+            padding: 5px 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .language-switcher a:hover {
+            background-color: #f0f0f0;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .language-switcher a.active {
+            font-weight: 600;
+            color: #007bff;
+            background-color: #e7f3ff;
+        }
+
+        /* --- 内容容器 (用于限制文本宽度，保持可读性) --- */
+        .content-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 25px; /* 左右内边距 */
+        }
+
+        /* --- 内容分区 --- */
+        .content-section {
+            background-color: #ffffff;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid #e9ecef; /* 分区之间的分隔线 */
+        }
+
+        /* --- 排版样式 --- */
+        h2, h3 {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            border-left: 4px solid #007bff;
+            padding-left: 15px;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+        
+        strong {
+            color: #333;
+        }
+
+        /* --- 功能特性网格 (保持卡片式以突出特性) --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+            font-size: 1.3em;
+            color: #007bff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-card img {
+            width: 1.2em;
+            height: 1.2em;
+            margin-right: 10px;
+        }
+        .feature-card p {
+            font-size: 1em;
+            margin-bottom: 0;
+        }
+
+
+        /* --- 隐私政策部分 --- */
+        .privacy-section h2 {
+            text-align: center;
+            border-left: none;
+            padding-left: 0;
+        }
+        .privacy-section .subtitle {
+            text-align: center;
+            max-width: 600px;
+            margin: -15px auto 30px auto;
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .privacy-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .privacy-section li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .privacy-section li::before {
+            content: '✓';
+            color: #28a745;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        /* --- 页脚 --- */
+        .footer {
+            text-align: center;
+            padding: 40px 25px;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        /* --- 响应式设计 --- */
+        @media (max-width: 768px) {
+            .content-wrapper { padding: 0 20px; }
+            h2 { font-size: 1.5em; }
+            p, .privacy-section .subtitle { font-size: 1em; }
+            .top-bar { text-align: center; padding: 10px 0;}
+            .language-switcher a { margin: 0 8px; }
+            .content-section { padding: 30px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部栏 -->
+    <header class="top-bar">
+        <div class="content-wrapper">
+            <div class="language-switcher">
+                <a href="#" lang-switcher="zh-CN" class="active">简体中文</a>
+                <a href="#" lang-switcher="en">English</a>
+                <a href="#" lang-switcher="ja">日本語</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- "为什么选择我们" 分区 -->
+        <section class="content-section">
+            <div class="content-wrapper">
+                <h2 data-lang="whyChooseUs">为什么选择我们？</h2>
+                <p data-lang="whyChooseUsDesc">我们致力于为开发者提供一个稳定、高效且易于使用的 AI API 中转服务，解决您在直接访问全球主流大模型时可能遇到的网络延迟、访问限制和多接口管理等问题。</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTEzIDNWNWg1djJINnYySDVWN0g0VjVIM3YxMUg1djJIMTR2LTJIN1Y4aDExVjZoLTNWMyIvPjwvc3ZnPg=="><span data-lang="unifiedInterface">统一接口</span></h3>
+                        <p data-lang="unifiedInterfaceDesc">无需为 OpenAI, Claude, Gemini 等不同模型维护多套代码。通过我们的统一端点，您可以无缝切换和调用所有支持的模型。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTEwLjIgMTMuODc1TDUuMzUgOS4wMjVsMS40MjUtMS40MjVsMi41NSA2LjA3NWw2LjA3NSAyLjU1bC0xLjQyNSAxLjQyNWwtMy44LTEuNlptMTEuMyA1LjZsLTYtNmwtMS40IDEuNEwzLjUgNS42NWwxLjQtMS40bDkuNiA5LjZsMS40LTEuNGw2IDZ6Ii8+PC9zdmc+"><span data-lang="highSpeed">高速稳定</span></h3>
+                        <p data-lang="highSpeedDesc">我们部署了全球优化的智能路由节点，确保您的每一次 API 请求都能获得最低延迟和最高的成功率。</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTUgMjFWN2gyVjVoNlY0aDJ2MWg2djJoMlY1YzAgLTEuMS0uOS0yLTItMkg1Yy0xLjEgMC0yIC45LTIgMnYxNmMwIDEuMS45IDIgMiAyaDE0YzEuMSAwIDItLjkgMi0ydi02aC0yem0xMi04bC00IDRsMiA1bC01LTNMMTYuNDcgOS41TDggMTNsMi01TDUgNWw1LjUtNC41TDggMWw0IDNsNC0zbC0yLjUgMi41TDggN3oiLz48L3N2Zz4="><span data-lang="secureReliable">安全可靠</span></h3>
+                        <p data-lang="secureReliableDesc">您的隐私和数据安全是我们的最高优先级。我们绝不记录或审查您的任何请求内容。详见下方隐私政策。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- "隐私承诺" 分区 -->
+        <section class="content-section privacy-section">
+            <div class="content-wrapper">
+                <h2 data-lang="privacyTitle">隐私与安全承诺</h2>
+                <p class="subtitle" data-lang="privacySubtitle">我们深知信任的价值。以下是我们对您隐私的庄严承诺：</p>
+                <ul>
+                    <li><strong data-lang="zeroLoggingTitle">数据零记录 (Zero Logging):</strong> <span data-lang="zeroLoggingDesc">我们承诺，<strong>绝不记录、存储或分析</strong>您通过本服务代理的任何请求内容或响应数据。您的对话内容、代码片段或任何业务数据完全属于您自己。</span></li>
+                    <li><strong data-lang="apiKeySecurityTitle">API 密钥安全:</strong> <span data-lang="apiKeySecurityDesc">您的 API 密钥在传输和存储过程中均经过行业标准的高强度加密处理，确保只有您自己能够访问。</span></li>
+                    <li><strong data-lang="pureGatewayTitle">纯粹的技术中转:</strong> <span data-lang="pureGatewayDesc">我们的服务本质是一个纯粹的技术数据包转发器。您的数据仅在内存中进行必要的处理和转发，绝不会在我们的服务器硬盘上停留。</span></li>
+                    <li><strong data-lang="anonymizedStatsTitle">匿名化统计:</strong> <span data-lang="anonymizedStatsDesc">为了优化服务质量（例如判断哪些节点需要扩容），我们可能会收集完全匿名的、聚合性的使用元数据，这些数据无法与任何特定用户关联。</span></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+        
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. 文本内容库 (与之前版本相同)
+    const translations = {
+        'zh-CN': {
+            pageTitle: '关于我们',
+            whyChooseUs: '为什么选择我们？',
+            whyChooseUsDesc: '我们致力于为开发者提供一个稳定、高效且易于使用的 AI API 中转服务，解决您在直接访问全球主流大模型时可能遇到的网络延迟、访问限制和多接口管理等问题。',
+            unifiedInterface: '统一接口',
+            unifiedInterfaceDesc: '无需为 OpenAI, Claude, Gemini 等不同模型维护多套代码。通过我们的统一端点，您可以无缝切换和调用所有支持的模型。',
+            highSpeed: '高速稳定',
+            highSpeedDesc: '我们部署了全球优化的智能路由节点，确保您的每一次 API 请求都能获得最低延迟和最高的成功率。',
+            secureReliable: '安全可靠',
+            secureReliableDesc: '您的隐私和数据安全是我们的最高优先级。我们绝不记录或审查您的任何请求内容。详见下方隐私政策。',
+            privacyTitle: '隐私与安全承诺',
+            privacySubtitle: '我们深知信任的价值。以下是我们对您隐私的庄严承诺：',
+            zeroLoggingTitle: '数据零记录 (Zero Logging):',
+            zeroLoggingDesc: '我们承诺，<strong>绝不记录、存储或分析</strong>您通过本服务代理的任何请求内容或响应数据。您的对话内容、代码片段或任何业务数据完全属于您自己。',
+            apiKeySecurityTitle: 'API 密钥安全:',
+            apiKeySecurityDesc: '您的 API 密钥在传输和存储过程中均经过行业标准的高强度加密处理，确保只有您自己能够访问。',
+            pureGatewayTitle: '纯粹的技术中转:',
+            pureGatewayDesc: '我们的服务本质是一个纯粹的技术数据包转发器。您的数据仅在内存中进行必要的处理和转发，绝不会在我们的服务器硬盘上停留。',
+            anonymizedStatsTitle: '匿名化统计:',
+            anonymizedStatsDesc: '为了优化服务质量（例如判断哪些节点需要扩容），我们可能会收集完全匿名的、聚合性的使用元数据，这些数据无法与任何特定用户关联。',
+            allRightsReserved: '版权所有。',
+        },
+        'en': {
+            pageTitle: 'About Us',
+            whyChooseUs: 'Why Choose Us?',
+            whyChooseUsDesc: 'We are dedicated to providing developers with a stable, efficient, and user-friendly AI API gateway service, addressing issues like network latency, access restrictions, and multi-interface management when accessing major global large models.',
+            unifiedInterface: 'Unified Interface',
+            unifiedInterfaceDesc: 'No need to maintain separate codebases for different models like OpenAI, Claude, or Gemini. With our unified endpoint, you can seamlessly switch between and call all supported models.',
+            highSpeed: 'High Speed & Stability',
+            highSpeedDesc: 'We have deployed globally optimized intelligent routing nodes to ensure your every API request achieves the lowest latency and highest success rate.',
+            secureReliable: 'Secure & Reliable',
+            secureReliableDesc: 'Your privacy and data security are our top priorities. We never log or review any of your request content. See our privacy policy below for details.',
+            privacyTitle: 'Privacy & Security Commitment',
+            privacySubtitle: 'We understand the value of trust. Here is our solemn commitment to your privacy:',
+            zeroLoggingTitle: 'Zero Logging:',
+            zeroLoggingDesc: 'We promise to <strong>never log, store, or analyze</strong> any request content or response data proxied through our service. Your conversation content, code snippets, or any business data belong entirely to you.',
+            apiKeySecurityTitle: 'API Key Security:',
+            apiKeySecurityDesc: 'Your API keys are encrypted with industry-standard, high-strength algorithms during both transmission and storage, ensuring that only you can access them.',
+            pureGatewayTitle: 'Pure Technical Gateway:',
+            pureGatewayDesc: 'Our service is fundamentally a pure technical data packet forwarder. Your data is only processed in memory for necessary forwarding and never resides on our server disks.',
+            anonymizedStatsTitle: 'Anonymized Statistics:',
+            anonymizedStatsDesc: 'To optimize service quality (e.g., determining which nodes need scaling), we may collect completely anonymous, aggregated usage metadata. This data cannot be associated with any specific user.',
+            allRightsReserved: 'All rights reserved.',
+        },
+        'ja': {
+            pageTitle: '私たちについて',
+            whyChooseUs: '選ばれる理由',
+            whyChooseUsDesc: '私たちは、開発者向けに安定、高効率、そして使いやすいAI APIゲートウェイサービスを提供することに専念しています。グローバルな主要大規模モデルへの直接アクセス時に遭遇する可能性のあるネットワーク遅延、アクセス制限、複数インターフェースの管理といった問題を解決します。',
+            unifiedInterface: '統一インターフェース',
+            unifiedInterfaceDesc: 'OpenAI、Claude、Geminiなど、異なるモデルのために複数のコードを維持する必要はありません。当社の統一エンドポイントを通じて、サポートされているすべてのモデルをシームレスに切り替えて呼び出すことができます。',
+            highSpeed: '高速性と安定性',
+            highSpeedDesc: 'グローバルに最適化されたインテリジェントルーティングノードを展開し、すべてのAPIリクエストで最小の遅延と最高の成功率を保証します。',
+            secureReliable: '安全性と信頼性',
+            secureReliableDesc: 'お客様のプライバシーとデータセキュリティは私たちの最優先事項です。リクエスト内容を記録または検閲することは一切ありません。詳細は以下のプライバシーポリシーをご覧ください。',
+            privacyTitle: 'プライバシーとセキュリティに関する約束',
+            privacySubtitle: '私たちは信頼の価値を深く理解しています。以下は、お客様のプライバシーに対する私たちの厳粛な約束です。',
+            zeroLoggingTitle: 'ゼロロギング:',
+            zeroLoggingDesc: '当サービスを介してプロキシされるリクエスト内容やレスポンスデータを、<strong>絶対に記録、保存、分析しない</strong>ことをお約束します。お客様の会話内容、コードスニペット、その他のビジネスデータは完全にお客様自身のものです。',
+            apiKeySecurityTitle: 'APIキーのセキュリティ:',
+            apiKeySecurityDesc: 'お客様のAPIキーは、転送中および保管中、業界標準の強力な暗号化によって処理され、お客様ご自身のみがアクセスできるように保証されています。',
+            pureGatewayTitle: '純粋な技術的ゲートウェイ:',
+            pureGatewayDesc: '当サービスは本質的に純粋な技術的データパケットフォワーダーです。お客様のデータは必要な転送処理のためにメモリ内でのみ処理され、サーバーのディスクに滞在することはありません。',
+            anonymizedStatsTitle: '匿名化された統計:',
+            anonymizedStatsDesc: 'サービス品質を最適化するため（例：どのノードを拡張する必要があるかの判断）、完全に匿名化され、集約された利用メタデータを収集することがあります。このデータは特定のユーザーに関連付けることはできません。',
+            allRightsReserved: '無断複写・転載を禁じます。',
+        }
+    };
+
+    const languageSwitcher = document.querySelector('.language-switcher');
+    const langLinks = languageSwitcher.querySelectorAll('a');
+    
+    // 2. 切换语言的函数
+    const switchLanguage = (lang) => {
+        document.querySelectorAll('[data-lang]').forEach(element => {
+            const key = element.getAttribute('data-lang');
+            if (translations[lang] && translations[lang][key]) {
+                element.innerHTML = translations[lang][key];
+            }
+        });
+        document.documentElement.lang = lang;
+        langLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('lang-switcher') === lang) {
+                link.classList.add('active');
+            }
+        });
+        localStorage.setItem('preferredLanguage', lang);
+    };
+
+    // 3. 事件监听
+    languageSwitcher.addEventListener('click', (event) => {
+        event.preventDefault();
+        const target = event.target;
+        if (target.tagName === 'A' && target.hasAttribute('lang-switcher')) {
+            switchLanguage(target.getAttribute('lang-switcher'));
+        }
+    });
+    
+    // 4. 初始化
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    const savedLang = localStorage.getItem('preferredLanguage');
+    const browserLang = navigator.language.startsWith('zh') ? 'zh-CN' : 
+                        navigator.language.startsWith('ja') ? 'ja' : 'en';
+    const initialLang = savedLang || browserLang || 'zh-CN';
+    switchLanguage(initialLang);
+});
+</script>
+
+</body>
+</html>
